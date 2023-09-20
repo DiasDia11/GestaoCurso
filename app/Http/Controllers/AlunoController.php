@@ -15,7 +15,7 @@ class AlunoController extends Controller
      */
     public function index(AlunoRepositoryInterface $repository)
     {
-        return $repository->findAll();
+        return view('aluno.aluno');
 
     }
 
@@ -43,21 +43,24 @@ class AlunoController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show(AlunoRepositoryInterface $repository,string $id)
     {
-        //
+        $aluno = $repository->find($id);
+        return view('aluno.show',['aluno' => $aluno]);
     }
 
     public function edit(AlunoRepositoryInterface $repository, string $id)
     {
-        return $repository->edit($id);
+        $aluno = $repository->find($id);
+        return view('aluno.edit',['aluno' => $aluno]);
     }
     /**
      * Update the specified resource in storage.
      */
-    public function update(AlunoRepositoryInterface $repository, string $id)
+    public function update(AlunoRepositoryInterface $repository, Request $request, string $id)
     {
-        var_dump($id);
+       return $repository->edit($id,$request);
+
     }
 
     /**
@@ -65,6 +68,6 @@ class AlunoController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        var_dump('delete');
     }
 }

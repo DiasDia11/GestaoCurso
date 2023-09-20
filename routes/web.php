@@ -31,14 +31,19 @@ Route::middleware('auth')->group(function () {
 
     Route::get('/aluno', [AlunoController::class, 'index'])->name('aluno');
     Route::get('/aluno/create', [AlunoController::class, 'create'])->name('aluno.novo');
+    Route::get('/aluno/lista', [AlunoController::class, 'list'])->name('aluno.lista');
     Route::post('/aluno', [AlunoController::class, 'store'])->name('aluno.cria');
     Route::get('/aluno/{aluno}/edit', [AlunoController::class, 'edit'])->name('aluno.edit');
     Route::put('/aluno/{aluno}', [AlunoController::class, 'update'])->name('aluno.update');
+    Route::get('/aluno/{aluno}', [AlunoController::class, 'show'])->name('aluno.show');
+    Route::delete('/aluno/{aluno}', [AlunoController::class, 'destroy'])->name('aluno.destroy');
 
     Route::get('/curso', [CursoController::class, 'index'])->name('curso');
     Route::get('/curso/create', [CursoController::class, 'create'])->name('curso.cria');
     Route::post('/curso/create', [CursoController::class, 'store'])->name('curso.novo');
-   // Route::get('/aluno', [AlunoController::class, 'index'])->name('aluno.list');
+    Route::get('/curso/lista', [CursoController::class, 'list'])->name('curso.lista');
+    Route::get('/curso/{curso}/edit', [CursoController::class, 'edit'])->name('curso.edit');
+    Route::put('/curso/{curso}', [CursoController::class, 'update'])->name('curso.update');
 });
 
 require __DIR__.'/auth.php';

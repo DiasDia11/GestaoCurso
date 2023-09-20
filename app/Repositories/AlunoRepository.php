@@ -17,6 +17,15 @@ class AlunoRepository implements AlunoRepositoryInterface
         $this->aluno = $aluno;
     }
 
+    public function edit(String $id, Request $request)
+    {
+        $atualizado = $this->aluno->where('id', $id)->update($request->except(['_token','_method']));
+        if($atualizado){
+            return redirect()->back()->with('message', 'Sucesso!');
+        }
+        return redirect()->back()->with('message', 'Error!');
+    }
+
     public function matriculaAlunoCurso(Aluno $aluno,Request $request)
     {
         if($request->curso != 'Selecione o Curso'){
@@ -35,10 +44,10 @@ class AlunoRepository implements AlunoRepositoryInterface
         return view('aluno.aluno',['alunos' => $alunos]);
     }
 
-    public function edit(string $id)
+    public function find(string $id)
     {
         $id = $this->aluno->find($id);
-        return view('aluno.edit', ['aluno' => $id]);
+        return $id;
     }
 
 

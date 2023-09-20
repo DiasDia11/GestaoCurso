@@ -32,9 +32,14 @@ class CursoController extends Controller
 
     public function list(CursoRepositoryInterface $repository)
     {
-        return $repository->findAll();
+        $cursos = $repository->findAll();
+        return view('curso.listaCurso',['cursos' => $cursos]);
     }
 
+    public function edit(CursoRepositoryInterface $repository, string $id)
+    {
+        return $repository->find($id);
+    }
 
     /**
      * Display the specified resource.
@@ -47,9 +52,9 @@ class CursoController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(CursoRepositoryInterface $repository,Request $request, string $id)
     {
-        //
+        return $repository->edit($id,$request);
     }
 
     /**

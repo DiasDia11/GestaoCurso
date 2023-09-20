@@ -13,28 +13,28 @@
             <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 text-gray-900 dark:text-gray-100">
                     <h1>Editar aluno</h2>
-                    <form method="POST" action="{{route('aluno.update',['aluno' => $aluno->id])}}">
-                        @method('PUT')
+                    <form method="POST" action="{{ route('aluno.destroy', ['aluno' => $aluno->id]) }}">
+                        @method('delete')
                         @csrf
-                        <input type="hidden">
                         <div>
                             <x-input-label for="nome" :value="__('Nome')" />
-                            <x-text-input id="nome" class="block mt-1 w-full" type="text" name="nome" value="{{$aluno->nome}}" required autofocus autocomplete="titulo" />
+                            <x-text-input id="nome" disabled class="block mt-1 w-full" type="text" name="nome" value="{{$aluno->nome}}" required autofocus autocomplete="titulo" />
                             <x-input-error :messages="$errors->get('nome')" class="mt-2" />
                         </div>
                         <div>
                             <x-input-label for="email" :value="__('E-mail')" />
-                            <x-text-input id="email" class="block mt-1 w-full" type="text" name="email" value="{{$aluno->email}}" required autofocus autocomplete="titulo" />
+                            <x-text-input id="email" disabled class="block mt-1 w-full" type="text" name="email" value="{{$aluno->email}}" required />
                             <x-input-error :messages="$errors->get('email')" class="mt-2" />
                         </div>
                         <div>
                             <x-input-label for="dtnascimento" :value="__('Data de nascimento')" />
-                            <x-text-input id="dtnascimento" class="block mt-1 w-full" type="text" name="dtnascimento" value="{{$aluno->dtnascimento}}" required autofocus autocomplete="titulo" />
+                            <x-text-input id="dtnascimento" disabled class="block mt-1 w-full" type="text" name="dtnascimento" value="{{$aluno->dtnascimento}}" required  />
                             <x-input-error :messages="$errors->get('dtnascimento')" class="mt-2" />
                         </div>
-                        <x-primary-button class="mt-3">
-                            {{ __('Editar') }}
-                        </x-primary-button>
+
+                        <x-danger-button class="mt-3">
+                            {{ __('Delete') }}
+                        </x-danger-button>
                     </form>
                 </div>
             </div>

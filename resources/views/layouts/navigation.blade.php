@@ -33,7 +33,7 @@
                                 <x-dropdown-link :href="route('aluno.novo')">
                                     {{ __('Matricular') }}
                                 </x-dropdown-link>
-                                <x-dropdown-link :href="route('aluno')">
+                                <x-dropdown-link :href="route('aluno.lista')">
                                     {{ __('Listar') }}
                                 </x-dropdown-link>
                                 <x-dropdown-link :href="route('aluno')">
