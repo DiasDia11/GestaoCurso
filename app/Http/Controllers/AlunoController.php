@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Repositories\Contracts\AlunoCursoRepositoryInterface;
 use App\Repositories\Contracts\CursoRepositoryInterface;
 use App\Repositories\Contracts\AlunoRepositoryInterface;
 use Illuminate\Http\Request;
@@ -13,7 +14,7 @@ class AlunoController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index(AlunoRepositoryInterface $repository)
+    public function index()
     {
         return view('aluno.aluno');
 
@@ -39,7 +40,6 @@ class AlunoController extends Controller
     {
         return $repository->findAll();
     }
-
     /**
      * Display the specified resource.
      */
@@ -66,8 +66,8 @@ class AlunoController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(AlunoRepositoryInterface $repository,string $id)
     {
-        var_dump('delete');
+        return $repository->delete($id);
     }
 }

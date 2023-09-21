@@ -19,6 +19,11 @@ class AppServiceProvider extends ServiceProvider
         );
 
         $this->app->bind(
+            'App\Repositories\Contracts\AlunoCursoRepositoryInterface',
+            'App\Repositories\AlunoCursoRepository'
+        );
+
+        $this->app->bind(
             'App\Repositories\Contracts\AlunoRepositoryInterface',
             'App\Repositories\AlunoRepository'
         );

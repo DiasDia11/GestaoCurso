@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Repositories\Contracts\AlunoCursoRepositoryInterface;
 use App\Repositories\Contracts\CursoRepositoryInterface;
 use Illuminate\Http\Request;
 
@@ -38,15 +39,21 @@ class CursoController extends Controller
 
     public function edit(CursoRepositoryInterface $repository, string $id)
     {
-        return $repository->find($id);
+        $curso = $repository->find($id);
+        return view('curso.edit', ['curso' => $curso]);
+    }
+
+    public function findAlunos(CursoRepositoryInterface $repository, string $id){
+
     }
 
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show(CursoRepositoryInterface $repository,string $id)
     {
-        //
+        $curso = $repository->find($id);
+        return view('curso.alunos',['curso' => $curso]);
     }
 
     /**

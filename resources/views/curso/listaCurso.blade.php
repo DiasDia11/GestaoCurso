@@ -23,11 +23,11 @@
                                             </td>
                                             <td>
                                             <a href="{{ route('curso.edit', ['curso' => $curso->id])}}">
-                                                <x-secondary-button class="mt-3" style="margin-left: 900px;">
+                                                <x-secondary-button class="mt-3" style="margin-left: 800px;">
                                                     {{ __('Editar') }}
                                                 </x-secondary-button>
                                             </a>
-                                            <a href="{{ route('curso.show', ['curso' => $curso->id])}}">
+                                            <a href="{{ route('curso.alunos', ['curso' => $curso->id])}}">
                                                 <x-danger-button class="mt-3">
                                                     {{ __('View') }}
                                                 </x-danger-button>

@@ -5,6 +5,7 @@ namespace App\Repositories;
 use Illuminate\Auth\Events\Registered;
 use App\Models\Aluno;
 use App\Models\AlunosCurso;
+use App\Repositories\Contracts\AlunoCursoRepositoryInterface;
 use App\Repositories\Contracts\AlunoRepositoryInterface;
 use Illuminate\Http\Request;
 
@@ -24,18 +25,6 @@ class AlunoRepository implements AlunoRepositoryInterface
             return redirect()->back()->with('message', 'Sucesso!');
         }
         return redirect()->back()->with('message', 'Error!');
-    }
-
-    public function matriculaAlunoCurso(Aluno $aluno,Request $request)
-    {
-        if($request->curso != 'Selecione o Curso'){
-            $alunoCurso = AlunosCurso::create([
-                'curso_id' => $request->curso,
-                'aluno_id' => $aluno->id,
-            ]);
-            event(new Registered($alunoCurso));
-            return;
-        }
     }
 
     public function findAll()
@@ -66,7 +55,20 @@ class AlunoRepository implements AlunoRepositoryInterface
         ]);
 
         event(new Registered($aluno));
+        $alunoCurso = new AlunosCurso();
+        $curso = new AlunoCursoRepository($alunoCurso);
 
-        $this->matriculaAlunoCurso($aluno,$request);
+        $curso->matriculaAlunoCurso($aluno,$request);
+    }
+
+    public function delete(string $id){
+        $alunoNoCurso = new AlunosCurso();
+        $curso = new AlunoCursoRepository($alunoNoCurso);
+        $delete = $curso->delete($id);
+        $this->aluno->where('id', $id)->delete();
+        if($delete){
+            return redirect()->route('aluno.lista')->with('message', 'Sucesso!');
+        }
+        return redirect()->route('aluno.lista')->with('message', 'Deu Errado!');
     }
 }

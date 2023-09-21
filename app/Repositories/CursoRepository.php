@@ -2,6 +2,7 @@
 
 namespace App\Repositories;
 
+use App\Models\AlunosCurso;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Http\Request;
 use App\Repositories\Contracts\CursoRepositoryInterface;
@@ -10,6 +11,12 @@ use App\Models\Curso;
 class CursoRepository implements CursoRepositoryInterface
 {
     public readonly Curso $curso;
+    public readonly AlunosCurso $alunoCurso;
+
+    public function getAlunos(AlunosCurso $alunoCurso)
+    {
+        $this->alunoCurso = $alunoCurso;
+    }
 
     public function __construct(Curso $curso)
     {
@@ -25,7 +32,7 @@ class CursoRepository implements CursoRepositoryInterface
     public function find(string $id)
     {
         $id = $this->curso->find($id);
-        return view('curso.edit', ['curso' => $id]);
+        return $id;
     }
 
     public function edit(String $id, Request $request)

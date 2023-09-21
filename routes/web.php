@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AlunoCursoController;
 use App\Http\Controllers\AlunoController;
 use App\Http\Controllers\CursoController;
 use App\Http\Controllers\ProfileController;
@@ -44,6 +45,8 @@ Route::middleware('auth')->group(function () {
     Route::get('/curso/lista', [CursoController::class, 'list'])->name('curso.lista');
     Route::get('/curso/{curso}/edit', [CursoController::class, 'edit'])->name('curso.edit');
     Route::put('/curso/{curso}', [CursoController::class, 'update'])->name('curso.update');
+
+    Route::get('/curso/lista/{curso}', [AlunoCursoController::class, 'list'])->name('curso.alunos');
 });
 
 require __DIR__.'/auth.php';

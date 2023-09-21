@@ -36,9 +36,6 @@
                                 <x-dropdown-link :href="route('aluno.lista')">
                                     {{ __('Listar') }}
                                 </x-dropdown-link>
-                                <x-dropdown-link :href="route('aluno')">
-                                    {{ __('Editar') }}
-                                </x-dropdown-link>
                             </x-slot>
                         </x-dropdown>
                         <x-dropdown align="right" width="48">
@@ -60,9 +57,6 @@
                                 </x-dropdown-link>
                                 <x-dropdown-link :href="route('curso')">
                                     {{ __('Listar') }}
-                                </x-dropdown-link>
-                                <x-dropdown-link :href="route('curso')">
-                                    {{ __('Editar') }}
                                 </x-dropdown-link>
                             </x-slot>
                         </x-dropdown>
