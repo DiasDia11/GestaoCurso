@@ -30,9 +30,11 @@
                             </x-slot>
 
                             <x-slot name="content">
-                                <x-dropdown-link :href="route('aluno.novo')">
-                                    {{ __('Matricular') }}
-                                </x-dropdown-link>
+                                @can('access')
+                                    <x-dropdown-link :href="route('aluno.novo')">
+                                        {{ __('Matricular') }}
+                                    </x-dropdown-link>
+                                @endcan
                                 <x-dropdown-link :href="route('aluno.lista')">
                                     {{ __('Listar') }}
                                 </x-dropdown-link>
@@ -52,9 +54,11 @@
                             </x-slot>
 
                             <x-slot name="content">
-                                <x-dropdown-link :href="route('curso.cria')">
-                                    {{ __('Criar') }}
-                                </x-dropdown-link>
+                                @can('access')
+                                    <x-dropdown-link :href="route('curso.cria')">
+                                        {{ __('Criar') }}
+                                    </x-dropdown-link>
+                                @endcan
                                 <x-dropdown-link :href="route('curso')">
                                     {{ __('Listar') }}
                                 </x-dropdown-link>

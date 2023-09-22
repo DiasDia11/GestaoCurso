@@ -23,28 +23,27 @@
                                         {{ $aluno->nome}}
                                         </td>
                                         <td>
-                                        <x-secondary-button class="mt-3" style="margin-left: 900px;" >
-                                            <a href="{{ route('aluno.edit', ['aluno' => $aluno->id])}}">
-                                                {{ __('Editar') }}
+                                            <div style="margin-left: 900px;">
+                                            @can('access')
+                                                <x-secondary-button class="mt-3"  >
+                                                    <a href="{{ route('aluno.edit', ['aluno' => $aluno->id])}}">
+                                                        {{ __('Editar') }}
+                                                    </a>
+                                                </x-secondary-button>
+                                            @endcan
+
+                                            <a href="{{ route('aluno.show', ['aluno' => $aluno->id])}}">
+                                                <x-danger-button class="mt-3">
+                                                    {{ __('show') }}
+                                                </x-danger-button>
                                             </a>
-                                        </x-secondary-button>
-                                        <a href="{{ route('aluno.show', ['aluno' => $aluno->id])}}">
-                                            <x-danger-button class="mt-3">
-                                                {{ __('show') }}
-                                            </x-danger-button>
-                                        </a>
+                                            </div>
                                         </td>
                                     </tr>
                                 @endforeach
                             @endif
                         </ul>
                     </table>
-
-                    <form method="GET" action="{{route('aluno.lista')}}">
-                        <x-primary-button class="mt-3">
-                            {{ __('Listar') }}
-                        </x-primary-button>
-                    </form>
                 </div>
             </div>
         </div>

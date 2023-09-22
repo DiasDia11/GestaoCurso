@@ -48,7 +48,7 @@ class AlunoRepository implements AlunoRepositoryInterface
             'dtnascimento' => 'required|date',
         ]);
 
-        $aluno = Aluno::firstOrCreate([
+        $aluno = Aluno::updateOrCreate([
             'nome' => $request->nome,
             'email' => $request->email,
             'dtnascimento' => $request->dtnascimento,

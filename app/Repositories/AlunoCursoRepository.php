@@ -38,7 +38,7 @@ class AlunoCursoRepository implements AlunoCursoRepositoryInterface
     public function matriculaAlunoCurso(Aluno $aluno,Request $request)
     {
         if($request->curso != 'Selecione o Curso'){
-            $alunoCurso = AlunosCurso::create([
+            $alunoCurso = AlunosCurso::updateOrCreate([
                 'curso_id' => $request->curso,
                 'aluno_id' => $aluno->id,
             ]);

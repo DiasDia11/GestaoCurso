@@ -32,10 +32,12 @@
                             <x-text-input id="dtnascimento" disabled class="block mt-1 w-full" type="text" name="dtnascimento" value="{{$aluno->dtnascimento}}" required  />
                             <x-input-error :messages="$errors->get('dtnascimento')" class="mt-2" />
                         </div>
+                        @can('access')
+                            <x-danger-button class="mt-3">
+                                {{ __('Delete') }}
+                            </x-danger-button>
+                        @endcan
 
-                        <x-danger-button class="mt-3">
-                            {{ __('Delete') }}
-                        </x-danger-button>
                     </form>
                 </div>
             </div>

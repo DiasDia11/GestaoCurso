@@ -22,16 +22,21 @@
                                             {{ $curso->titulo}}
                                             </td>
                                             <td>
-                                            <a href="{{ route('curso.edit', ['curso' => $curso->id])}}">
-                                                <x-secondary-button class="mt-3" style="margin-left: 800px;">
-                                                    {{ __('Editar') }}
-                                                </x-secondary-button>
-                                            </a>
-                                            <a href="{{ route('curso.alunos', ['curso' => $curso->id])}}">
-                                                <x-danger-button class="mt-3">
-                                                    {{ __('View') }}
-                                                </x-danger-button>
-                                            </a>
+                                                <div style="margin-left: 900px;">
+                                                    @can('access')
+                                                    <a href="{{ route('curso.edit', ['curso' => $curso->id])}}">
+                                                        <x-secondary-button class="mt-3" >
+                                                            {{ __('Editar') }}
+                                                        </x-secondary-button>
+                                                    </a>
+                                                    @endcan
+
+                                                    <a href="{{ route('curso.alunos', ['curso' => $curso->id])}}">
+                                                        <x-danger-button class="mt-3">
+                                                            {{ __('View') }}
+                                                        </x-danger-button>
+                                                    </a>
+                                                </div>
                                             </td>
                                         </tr>
                                     @endforeach

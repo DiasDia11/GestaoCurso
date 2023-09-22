@@ -12,9 +12,10 @@
             <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 text-gray-900 dark:text-gray-100">
                     <h1 class="ml-6 font-semibold text-xl text-gray-800 dark:text-gray-200">Matriculados</h2>
-                    <table style="border: 1px solid rgb(211, 208, 193)">
+                    <table style="border: 1px solid rgb(211, 208, 193); padding-right: 900px">
                         <tr class="ml-6 font-semibold text-xl text-gray-800 dark:text-gray-200" style="border: 1px solid rgb(211, 208, 193)">
-                            <td>Alunos</td>
+                            <td>Nomes</td>
+                            <td style="display: flex; justify-content: end">ID</td>
                         </tr>
                         @if (isset($curso))
 
@@ -22,10 +23,12 @@
                                 @foreach ($curso as $c)
                                     <tr style="border: 1px solid rgb(211, 208, 193)">
                                         <td>
-                                            {{$c->id}}
+                                            {{ $nomesDosAlunos[$c->aluno_id] }}
                                         </td>
                                         <td>
-                                            {{ $nomesDosAlunos[$c->aluno_id] }}
+                                            <div style="margin-left: 900px">
+                                                {{$c->id}}
+                                            </div>
                                         </td>
                                     </tr>
                                 @endforeach
