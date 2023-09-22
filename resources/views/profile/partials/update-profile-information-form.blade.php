@@ -28,6 +28,10 @@
             <x-text-input id="email" name="email" type="email" class="mt-1 block w-full" :value="old('email', $user->email)" required autocomplete="username" />
             <x-input-error class="mt-2" :messages="$errors->get('email')" />
 
+            <x-input-label for="access_level" :value="__('Acesso')" />
+            <x-text-input id="access_level" name="access_level" type="text" class="mt-1 block w-full" :value="old('access', $user->access_level)" required autocomplete="username" />
+            <x-input-error class="mt-2" :messages="$errors->get('access_level')" />
+
             @if ($user instanceof \Illuminate\Contracts\Auth\MustVerifyEmail && ! $user->hasVerifiedEmail())
                 <div>
                     <p class="text-sm mt-2 text-gray-800 dark:text-gray-200">
